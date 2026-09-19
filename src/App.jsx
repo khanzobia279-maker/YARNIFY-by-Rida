@@ -7,6 +7,7 @@ import Footer from "./components/Footer.jsx";
 import HomeExtras from "./components/HomeExtras.jsx";
 import LazyImage from "./components/LazyImage.jsx";
 import Contact from "./components/Contact.jsx";
+import BackToTop from "./components/BackToTop.jsx";
 import products from "./data/products.js";
 
 const saleProducts = [
@@ -145,16 +146,17 @@ export default function App() {
     setReviews((items) => [{ name: formData.get("name"), rating: Number(formData.get("rating")), comment: formData.get("comment") }, ...items]);
     event.currentTarget.reset();
   };
-  const page = path === "/shop" ? <ShopPage onAdd={addToCart} onSelect={setSelectedProduct} /> : path === "/about" ? <About reviews={reviews} onSubmitReview={submitReview} /> : path === "/contact" ? <Contact product={contactProduct} /> : path === "/sale" ? <SalePage onAdd={addToCart} onSelect={setSelectedProduct} /> : <><Hero onNavigate={navigate} onAdd={addToCart} /><HomeExtras onNavigate={navigate} part="before" /><ProductGrid products={products} onAdd={addToCart} onSelect={setSelectedProduct} /><HomeExtras onNavigate={navigate} part="after" /><About preview /></>;
+  const page = path === "/shop" ? <ShopPage onAdd={addToCart} onSelect={setSelectedProduct} /> : path === "/about" ? <About reviews={reviews} onSubmitReview={submitReview} onNavigate={navigate} /> : path === "/contact" ? <Contact product={contactProduct} /> : path === "/sale" ? <SalePage onAdd={addToCart} onSelect={setSelectedProduct} /> : <><Hero onNavigate={navigate} onAdd={addToCart} /><HomeExtras onNavigate={navigate} part="before" /><ProductGrid products={products} onAdd={addToCart} onSelect={setSelectedProduct} /><HomeExtras onNavigate={navigate} part="after" /><About preview onNavigate={navigate} /></>;
 
   return (
     <div className="site-shell">
       <Header cartCount={cart.length} onNavigate={navigate} currentPath={path} filterOpen={filterOpen} onToggleFilter={() => setFilterOpen(!filterOpen)} bagOpen={bagOpen} onBagToggle={() => setBagOpen(!bagOpen)} />
       {filterOpen && <GlobalFilter onNavigate={navigate} onClose={() => setFilterOpen(false)} />}
       {page}
-      <Footer />
+      <Footer onNavigate={navigate} />
       {bagOpen && <BagDrawer items={cart} onRemove={(index) => setCart((items) => items.filter((_, itemIndex) => itemIndex !== index))} onClose={() => setBagOpen(false)} />}
       <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} onContact={() => openContact(selectedProduct)} />
+      <BackToTop />
     </div>
   );
 }

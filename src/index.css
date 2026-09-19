@@ -74,6 +74,13 @@
   @media (min-width: 768px) { .review-wall { columns: 3; } .review-card:nth-child(2n) { margin-top: 2.5rem; } }
   .product-image img { @apply transition duration-500 ease-out; }
   .product-card:hover .product-image img { @apply scale-105; }
+  .back-to-top { position: fixed; right: 1.25rem; bottom: 1.5rem; z-index: 22; display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(255,243,233,.18); background: #402f26; padding: .75rem 1rem; color: #fff3e9; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 14px 28px rgba(64,47,38,.24); opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease; }
+  .back-to-top-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+  .back-to-top:hover { background: #ba5e42; border-color: #ba5e42; }
+  .back-to-top:focus-visible { outline: 2px solid #ba5e42; outline-offset: 3px; }
+  .back-to-top-icon { font-size: .85rem; line-height: 1; }
+  @media (min-width: 768px) { .back-to-top { right: 2rem; bottom: 2rem; padding: .85rem 1.15rem; } }
+  @media (max-width: 380px) { .back-to-top-label { display: none; } }
 }
 
 @media (prefers-reduced-motion: reduce) {

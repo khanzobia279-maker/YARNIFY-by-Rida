@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import LazyImage from "./LazyImage.jsx";
 
-export default function About({ preview = false, reviews = [], onSubmitReview }) {
+export default function About({ preview = false, reviews = [], onSubmitReview, onNavigate }) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function About({ preview = false, reviews = [], onSubmitReview })
   }, [preview]);
 
   if (preview) {
-    return <section ref={sectionRef} className="mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 sm:px-8 md:grid-cols-[1fr_.9fr] md:py-24"><div className="about-image min-w-0"><LazyImage src="/images/pink-flower-bag.webp" alt="Handmade pink flower shoulder bag" aspect="aspect-[4/3]" className="min-h-[300px] bg-[#d9c5b9] md:min-h-[460px]" /></div><div className="about-copy min-w-0"><p className="eyebrow">The Yarnify story</p><h2 className="type-display-lg">Made for <em className="text-clay">soft</em><br />moments.</h2><p className="type-body mt-6 max-w-[420px] text-ink/60">Thoughtful crochet pieces for bright homes, slow mornings, and the people you love.</p><a className="text-link mt-4 inline-block" href="/about">Meet the maker ↗</a></div></section>;
+    return <section ref={sectionRef} className="mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 sm:px-8 md:grid-cols-[1fr_.9fr] md:py-24"><div className="about-image min-w-0"><LazyImage src="/images/pink-flower-bag.webp" alt="Handmade pink flower shoulder bag" aspect="aspect-[4/3]" className="min-h-[300px] bg-[#d9c5b9] md:min-h-[460px]" /></div><div className="about-copy min-w-0"><p className="eyebrow">The Yarnify story</p><h2 className="type-display-lg">Made for <em className="text-clay">soft</em><br />moments.</h2><p className="type-body mt-6 max-w-[420px] text-ink/60">Thoughtful crochet pieces for bright homes, slow mornings, and the people you love.</p><button type="button" className="text-link mt-4 inline-block border-0 bg-transparent p-0" onClick={() => onNavigate("/about")}>Meet the maker ↗</button></div></section>;
   }
 
   const displayedReviews = reviews;
