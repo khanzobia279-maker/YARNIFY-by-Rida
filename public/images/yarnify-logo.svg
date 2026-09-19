@@ -1,0 +1,46 @@
+<svg width="1200" height="600" viewBox="80 80 1040 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F9E9E0"/>
+    </linearGradient>
+    <radialGradient id="roseGold" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#D98C70"/>
+      <stop offset="40%" stop-color="#BA5E42"/>
+      <stop offset="100%" stop-color="#8F5A35"/>
+    </radialGradient>
+    <linearGradient id="needleGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#162741"/>
+      <stop offset="100%" stop-color="#2A3B5A"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="600" fill="url(#bgGradient)"/>
+  <path d="M100 460C170 390 250 340 340 345C430 350 500 430 610 415C720 400 780 320 860 290C940 260 1000 320 1080 360" fill="none" stroke="#F3D4C3" stroke-width="120" opacity="0.75" filter="url(#softShadow)"/>
+  <path d="M110 480C190 400 280 350 360 360C440 370 520 435 620 425C720 415 780 335 860 305C940 275 1000 335 1080 375" fill="none" stroke="#FCE7DE" stroke-width="84" opacity="0.85"/>
+
+  <g transform="translate(140 100) rotate(-15 20 20)">
+    <rect x="0" y="0" width="30" height="340" rx="14" fill="url(#needleGradient)"/>
+    <path d="M8 18C8 9.16344 15.1634 2 24 2H26C34.8366 2 42 9.16344 42 18V26C42 34.8366 34.8366 42 26 42H24C15.1634 42 8 34.8366 8 26V18Z" fill="#FFFFFF" opacity="0.92"/>
+    <path d="M6 0H46V8H6V0Z" fill="#162741"/>
+    <path d="M20 30C20 31.6569 18.6569 33 17 33C15.3431 33 14 31.6569 14 30C14 28.3431 15.3431 27 17 27C18.6569 27 20 28.3431 20 30Z" fill="#FFFFFF"/>
+  </g>
+
+  <path d="M220 330C240 310 290 260 380 260C460 260 540 297 620 305C720 314 760 265 820 250C900 230 930 192 980 170" fill="none" stroke="#FFFFFF" stroke-width="8" opacity="0.95"/>
+  <path d="M230 315C250 294 302 242 388 242C463 242 540 278 620 286C720 295 760 250 820 234C900 210 930 174 980 154" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+
+  <text x="360" y="310" font-family="'Segoe Script', 'Brush Script MT', cursive" font-size="120" fill="url(#roseGold)" letter-spacing="3" font-weight="700">
+    yarnify
+  </text>
+  <path d="M360 322C410 290 480 264 560 282C640 300 700 360 780 348" fill="none" stroke="#FFFFFF" stroke-width="10" opacity="0.85" stroke-linecap="round"/>
+  <path d="M365 318C425 294 490 286 550 302C620 320 685 368 760 358" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.7" stroke-linecap="round"/>
+
+  <path d="M520 370C550 415 610 425 670 399" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.75" stroke-linecap="round"/>
+
+  <path d="M790 150C810 120 850 106 890 120C930 134 954 170 940 195" fill="none" stroke="#FFFFFF" stroke-width="7" opacity="0.8" stroke-linecap="round"/>
+
+  <circle cx="740" cy="216" r="8" fill="#FFFFFF" opacity="0.82"/>
+</svg>
