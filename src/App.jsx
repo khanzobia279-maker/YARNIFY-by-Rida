@@ -16,6 +16,7 @@ const saleProducts = [
   products.find((product) => product.name === "Red rose gajray"),
   products.find((product) => product.name === "Yellow flower gajray"),
 ].filter(Boolean);
+const reviewStorageKey = "yarnify-reviews";
 
 function navigate(path) {
   window.history.pushState({}, "", path);
@@ -113,7 +114,13 @@ export default function App() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage.getItem(reviewStorageKey) || "[]");
+    } catch {
+      return [];
+    }
+  });
   const [contactProduct, setContactProduct] = useState(null);
 
   useEffect(() => {
@@ -121,6 +128,10 @@ export default function App() {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(reviewStorageKey, JSON.stringify(reviews));
+  }, [reviews]);
 
   const addToCart = (product) => { setCart((items) => [...items, product]); setBagOpen(true); };
   const openContact = (product) => {
