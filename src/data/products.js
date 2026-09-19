@@ -43,7 +43,6 @@ const products = [
   { name: "Spidy keychain", image: "/images/spidy%20keychain.png", category: "Little gifts", price: 16, tone: "B" },
   { name: "Summer cap", image: "/images/summer%20cap.png", category: "Little gifts", price: 39, tone: "C" },
   { name: "Tulip head band", image: "/images/tulip%20head%20band.png", category: "Little gifts", price: 23, tone: "D" },
-  { name: "Viral crochet bandanna", image: "/images/viral%20crochet%20bandanna.png", category: "Little gifts", price: 26, tone: "E" },
   { name: "Pink flower shoulder bag", image: "/images/PINK%20FLOWER%20SHOULDER%20BAG.PNG", category: "Bags", price: 61, tone: "F" },
   { name: "Pink rose throw", image: "/images/pink-rose-blanket.webp", category: "Home", price: 116, tone: "G" },
   { name: "Sunflower themed bag", image: "/images/SUNFLOWER%20THEMED%20BAG.PNG", category: "Bags", price: 64, tone: "H" },
