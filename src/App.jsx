@@ -10,6 +10,8 @@ import Contact from "./components/Contact.jsx";
 import BackToTop from "./components/BackToTop.jsx";
 import products from "./data/products.js";
 
+const ORDER_EMAIL = "binte.shahid789@gmail.com";
+
 const saleProducts = [
   products.find((product) => product.name === "Blossom shoulder bag"),
   products.find((product) => product.name === "Sunburst market tote"),
@@ -23,6 +25,22 @@ function navigate(path) {
   window.history.pushState({}, "", path);
   window.dispatchEvent(new PopStateEvent("popstate"));
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Builds a pre-filled order email from whatever is in the bag.
+function buildOrderMailto(items) {
+  const subject = `Yarnify order request (${items.length} item${items.length > 1 ? "s" : ""})`;
+  const lines = items.map((item, index) => `${index + 1}. ${item.name}${item.price ? ` - $${item.price}` : ""}`);
+  const body = [
+    "Hi Yarnify, I would like to order the following:",
+    "",
+    ...lines,
+    "",
+    "My name:",
+    "My delivery address:",
+    "My phone number:",
+  ].join("\n");
+  return `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function GlobalFilter({ onNavigate, onClose }) {
@@ -54,10 +72,22 @@ function ProductModal({ product, onClose, onContact }) {
 }
 
 function BagDrawer({ items, onRemove, onClose }) {
+  const orderHref = items.length > 0 ? buildOrderMailto(items) : undefined;
+
   return (
     <aside id="bag-drawer" className="fixed right-0 top-[122px] z-[25] w-full max-w-md border-l border-line bg-surface p-6 shadow-2xl" aria-label="Your bag">
       <div className="mb-6 flex items-center justify-between gap-4 border-b border-line pb-4"><div><p className="eyebrow mb-2">Your bag</p><h2 className="type-display-md">{items.length ? `${items.length} piece${items.length > 1 ? "s" : ""}` : "Nothing yet"}</h2></div><button className="border-0 bg-transparent text-sm text-ink/60 underline underline-offset-4 hover:text-clay" onClick={onClose}>Close</button></div>
       {items.length === 0 ? <p className="py-8 text-sm leading-7 text-ink/60">Choose a handmade piece and it will appear here.</p> : <div className="grid max-h-[55vh] gap-4 overflow-y-auto">{items.map((item, index) => <article key={`${item.name}-${index}`} className="flex gap-4 border-b border-line pb-4"><img className="h-24 w-24 shrink-0 object-cover" src={item.image} alt={item.name} /><div className="min-w-0 flex-1"><h3 className="type-small font-semibold">{item.name}</h3><p className="mt-1 font-mono text-[10px] uppercase text-ink/50">{item.category}</p><button className="mt-3 border-0 bg-transparent p-0 text-xs text-clay underline underline-offset-4" onClick={() => onRemove(index)}>Remove</button></div></article>)}</div>}
+      {items.length > 0 && (
+        <a href={orderHref} className="button-dark mt-6 w-full justify-center">
+          Place order <span>↗</span>
+        </a>
+      )}
+      {items.length > 0 && (
+        <p className="mt-3 text-center text-xs text-ink/50">
+          This opens your email app with your order pre-filled. We'll confirm details and payment with you directly.
+        </p>
+      )}
     </aside>
   );
 }
